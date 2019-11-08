@@ -5,29 +5,24 @@ from invoke import task
 EMAIL = "me@example.com"
 DOMAIN = "example.com"
 VAR_DIR = "var"
-HOST = "localhost"
 BIN_DIR = f"{sys.exec_prefix}/bin"
 
 
+def run_vars(c, sudo):
+    if sudo:
+        return c.sudo, "0.0.0.0", 80
+    else:
+        return c.run, "localhost", 8080
+
 @task
 def flask(c, sudo=False):
-    if sudo:
-        PORT = 80
-        run = c.sudo
-    else:
-        PORT = 8080
-        run = c.run
+    run, HOST, PORT = run_vars(c, sudo)
     run(f"{BIN_DIR}/flask run -h {HOST} -p {PORT}")
 
 
 @task
-def gunicorn(c):
-    if sudo:
-        PORT = 80
-        run = c.sudo
-    else:
-        PORT = 8080
-        run = c.run
+def gunicorn(c, sudo=False):
+    run, HOST, PORT = run_vars(c, sudo)
     # run("gunicorn --certfile cert.pem --keyfile key.pem -b 0.0.0.0:80 app:app")
     run(f"{BIN_DIR}/gunicorn -b {HOST}:{PORT} app:app")
 

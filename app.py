@@ -6,10 +6,6 @@ app = Flask(__name__, static_url_path='')
 app.config['DEBUG'] = True
 
 
-with open("credentials.json") as fp:
-    credentials = json.load(fp)
-
-
 @app.route("/")
 def hello():
     return "Hello World!"
