@@ -5,20 +5,23 @@
 #    pip-compile
 #
 acme==0.40.1              # via certbot
-certbot==0.40.1
+certbot==0.40.1           # via -r requirements.in
 certifi==2019.9.11        # via requests
 cffi==1.13.2              # via cryptography
 chardet==3.0.4            # via requests
 click==7.0                # via flask
 configargparse==0.15.1    # via certbot
 configobj==5.0.6          # via certbot
-cryptography==2.8         # via acme, certbot, josepy, pyopenssl, requests
+cryptography==3.2         # via acme, certbot, josepy, pyopenssl, requests
 distro==1.4.0             # via certbot
-flask==1.1.1
+enum34==1.1.10            # via cryptography
+flask==1.1.1              # via -r requirements.in
+funcsigs==1.0.2           # via mock
 future==0.18.2            # via parsedatetime
-gunicorn==19.9.0
+gunicorn==19.9.0          # via -r requirements.in
 idna==2.8                 # via requests
-invoke==1.3.0
+invoke==1.3.0             # via -r requirements.in
+ipaddress==1.0.23         # via cryptography
 itsdangerous==1.1.0       # via flask
 jinja2==2.10.3            # via flask
 josepy==1.2.0             # via acme, certbot
@@ -39,8 +42,8 @@ zope.deferredimport==4.3.1  # via zope.component
 zope.deprecation==4.4.0   # via zope.component
 zope.event==4.4           # via zope.component
 zope.hookable==4.2.0      # via zope.component
-zope.interface==4.6.0     # via certbot, zope.component, zope.proxy
+zope.interface==4.6.0     # via certbot, zope.component
 zope.proxy==4.3.2         # via zope.deferredimport
 
 # The following packages are considered to be unsafe in a requirements file:
-# setuptools==41.6.0        # via acme, certbot, josepy, zope.component, zope.deferredimport, zope.deprecation, zope.event, zope.hookable, zope.interface, zope.proxy
+# setuptools
